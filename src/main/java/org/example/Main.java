@@ -1,49 +1,36 @@
 package org.example;
 
-import org.example.controller.PaginationController;
-import org.example.controller.ProductController;
-import org.example.modal.dao.ProductDaoImp;
+import org.example.view.View;
+import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-        // Initialize DAO and Controller
-        ProductDaoImp productDao = new ProductDaoImp();
-        ProductController productController = new ProductController(productDao);
+        // Create an instance of the View class
+        View view = new View();
 
-        // Adding products
-//        productController.addProduct(new Product("Product 1", 100.0, 10));
-//        productController.addProduct(new Product("Product 2", 150.0, 15));
-//        productController.addProduct(new Product("Product 3", 200.0, 20));
+        // Scanner to get user input
+        Scanner scanner = new Scanner(System.in);
 
-        // Print pending products
-//        productController.printPendingProducts();
+        // Display menu to user
+        System.out.println("Select an action:");
+        System.out.println("1. Add products");
+        System.out.println("2. Print pending products");
+        System.out.println("3. Save products");
+        System.out.println("4. Display first page");
+        System.out.println("5. Display next page");
+        System.out.println("6. Display previous page");
+        System.out.println("7. Display last page");
+        System.out.println("8. Get all products");
+        System.out.println("9. Get product by ID");
+        System.out.print("Enter your choice: ");
 
-        // Save products to the database
-//        productController.saveProducts();
+        // Get the user's choice
+        int choice = scanner.nextInt();
 
-        // Print pending products after saving
-//        productController.printPendingProducts();
+        // Call the handleAction method in the View class to process the user's choice
+        view.handleAction(choice);
 
-        // Optionally cancel pending products
-//         productController.cancelPending();
-
-        // Initialize Controller
-        PaginationController paginationController = new PaginationController();
-
-        // Display the first page
-        paginationController.displayFirstPage();
-
-        // Display the next page
-//        paginationController.displayNextPage(1);  // Assuming the current page is 1
-
-        // Display the previous page
-//        paginationController.displayPreviousPage(2);  // Assuming the current page is 2
-
-        // Display the last page
-//        paginationController.displayLastPage();
-
-        // Display a specific page
-//        paginationController.displayPage(3);
+        // Close the scanner
+        scanner.close();
     }
 }
